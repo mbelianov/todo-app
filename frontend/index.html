@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App - Stay Organized</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header-title">
+                <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 11l3 3L22 4"></path>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+                My Todo List
+            </h1>
+            <p class="header-subtitle">Stay organized and productive</p>
+        </header>
+
+        <!-- Stats Section -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-value" id="totalCount">0</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="activeCount">0</div>
+                <div class="stat-label">Active</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="completedCount">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+        </div>
+
+        <!-- Add Todo Form -->
+        <div class="add-todo-section">
+            <form id="todoForm" class="todo-form">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        id="todoTitle" 
+                        class="input-field" 
+                        placeholder="What needs to be done?"
+                        required
+                        maxlength="200"
+                    >
+                </div>
+                <div class="form-group">
+                    <textarea 
+                        id="todoDescription" 
+                        class="input-field textarea-field" 
+                        placeholder="Add a description (optional)"
+                        rows="2"
+                        maxlength="1000"
+                    ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Add Task
+                </button>
+            </form>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="active">Active</button>
+            <button class="filter-tab" data-filter="completed">Completed</button>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-state" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading todos...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <h3>No todos yet</h3>
+            <p>Add your first task to get started!</p>
+        </div>
+
+        <!-- Todo List -->
+        <div id="todoList" class="todo-list"></div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
