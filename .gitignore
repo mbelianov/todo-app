@@ -76,3 +76,5 @@ lerna-debug.log*
 
 # OS
 Thumbs.db
+.bob/mcp.json
+.bob/mcp.json
